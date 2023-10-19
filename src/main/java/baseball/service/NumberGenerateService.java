@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class NumberGenerator {
+public class NumberGenerateService {
 
     public List<Integer> getGeneratedNumbers() {
         List<Integer> numbers = new ArrayList<>();
