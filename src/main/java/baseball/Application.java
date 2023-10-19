@@ -1,11 +1,11 @@
 package baseball;
 
-import baseball.model.BaseballGame;
+import baseball.controller.BaseballGameController;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        BaseballGame baseballGame = new BaseballGame();
-        baseballGame.startGame();
+        BaseballGameController baseballGameController = new BaseballGameController();
+        baseballGameController.start();
     }
 }

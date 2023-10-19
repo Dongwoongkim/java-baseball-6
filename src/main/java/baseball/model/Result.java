@@ -1,4 +1,4 @@
-package baseball.view;
+package baseball.model;
 
 public class Result {
     private Integer strike;

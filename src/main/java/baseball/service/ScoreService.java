@@ -1,15 +1,18 @@
 package baseball.service;
 
-import baseball.model.Computer;
-import baseball.model.User;
+
+import baseball.model.Result;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class ScoreCalculateService {
+public class ScoreService {
 
-    private User userScore;
-    private Computer computer;
+    public Result calculateScore(List<Integer> input, List<Integer> result) {
+        Integer strike = calculateStrike(input, result);
+        Integer ball = calculateBall(input, result);
+        return new Result(strike, ball);
+    }
 
     public Integer calculateStrike(List<Integer> input, List<Integer> result) {
         return (int) IntStream.range(0, result.size())

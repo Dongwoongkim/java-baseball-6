@@ -1,20 +1,15 @@
 package baseball.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class NumberGenerateService {
-
     public List<Integer> getGeneratedNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        List<Integer> result;
-        IntStream.rangeClosed(1, 9).forEach(numbers::add);
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         Collections.shuffle(numbers);
-        result = IntStream.range(0, 3).mapToObj(numbers::get).collect(Collectors.toList());
-
+        List<Integer> result = numbers.subList(0, 3);
         return result;
     }
 }

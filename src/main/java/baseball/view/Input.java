@@ -1,11 +1,11 @@
-package baseball.model;
+package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Input {
     private List<Integer> input;
     private Integer exit;
 
@@ -38,11 +38,25 @@ public class User {
     private void setExit() {
         String line = Console.readLine();
         validateExit(line);
-
+        this.exit = Integer.parseInt(line);
     }
 
     private void validateExit(String line) {
+        if (!isLengthOne(line)) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+        }
+        if (!isEqualTo1or2(line)) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+        }
 
+    }
+
+    private boolean isLengthOne(String line) {
+        return line.length() == 1;
+    }
+
+    private boolean isEqualTo1or2(String line) {
+        return line.charAt(0) == '1' || line.charAt(0) == '2';
     }
 
     public boolean validateInput(String input) {
