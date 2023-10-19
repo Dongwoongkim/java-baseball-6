@@ -2,8 +2,8 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import static baseball.InputValidator.*;
-import static baseball.converter.StringToListConverter.StringToList;
+import static baseball.util.validator.InputValidator.*;
+import static baseball.util.converter.StringToListConverter.StringToList;
 
 public class Input {
     private List<Integer> input;
