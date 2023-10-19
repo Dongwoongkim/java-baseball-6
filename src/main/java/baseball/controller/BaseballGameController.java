@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.service.NumberGenerateService;
+import baseball.service.RandomNumberGenerateService;
 import baseball.service.ScoreService;
 import baseball.view.Input;
 import baseball.model.Result;
@@ -11,14 +11,14 @@ import java.util.List;
 public class BaseballGameController {
 
     private static final Integer THREE_STRIKE = 3;
-    private NumberGenerateService numberGenerateService;
+    private RandomNumberGenerateService randomNumberGenerateService;
     private ScoreService scoreService;
     private Input input;
     private Output output;
     private Result result;
 
     public BaseballGameController() {
-        this.numberGenerateService = new NumberGenerateService();
+        this.randomNumberGenerateService = new RandomNumberGenerateService();
         this.scoreService = new ScoreService();
         this.input = new Input();
         this.result = new Result(0, 0);
@@ -27,8 +27,7 @@ public class BaseballGameController {
 
     public void start() {
         output.printStartMessage();
-        List<Integer> answer = numberGenerateService.getGeneratedNumbers();
-        System.out.println(answer);
+        List<Integer> answer = randomNumberGenerateService.getGeneratedNumbers();
 
         while (true) {
             output.printInputRequestMessage();
@@ -37,7 +36,7 @@ public class BaseballGameController {
             if (isAllStrike(result)) {
                 output.printRestartOrExitMessage();
                 if (input.getExit() == 1) {
-                    answer = numberGenerateService.getGeneratedNumbers();
+                    answer = randomNumberGenerateService.getGeneratedNumbers();
                     continue;
                 }
                 break;
