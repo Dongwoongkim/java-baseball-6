@@ -1,5 +1,7 @@
 package baseball.service;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,9 +9,13 @@ import java.util.List;
 
 public class RandomNumberGenerateService {
     public List<Integer> getGeneratedNumbers() {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        Collections.shuffle(numbers);
-        List<Integer> result = numbers.subList(0, 3);
-        return result;
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        return computer;
     }
 }
