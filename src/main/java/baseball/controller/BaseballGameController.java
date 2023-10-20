@@ -9,6 +9,7 @@ import java.util.List;
 
 public class BaseballGameController {
 
+    private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
     private static final Integer EXIT = 2;
     private final AnswerGenerateService answerGenerateService = new AnswerGenerateService();
     private final ScoreService scoreService = new ScoreService();
@@ -17,7 +18,7 @@ public class BaseballGameController {
 
     public void start() {
         List<Integer> answer;
-        outputView.printStartMessage();
+        printStartMessage();
         while (true) {
             answer = makeNewAnswer();
             playOneRound(answer);
@@ -30,11 +31,11 @@ public class BaseballGameController {
     private void playOneRound(List<Integer> answer) {
         Result result;
         while (true) {
-            outputView.printInputRequestMessage();
+            inputView.printInputRequestMessage();
             result = scoreService.calculateScore(inputView.getSubmit(), answer);
             outputView.printResult(result);
             if (scoreService.isAllStrike(result)) {
-                outputView.printRestartOrExitMessage();
+                inputView.printRestartOrExitMessage();
                 break;
             }
         }
@@ -43,5 +44,9 @@ public class BaseballGameController {
     private List<Integer> makeNewAnswer() {
         List<Integer> answer = answerGenerateService.getGeneratedNumbers();
         return answer;
+    }
+
+    public void printStartMessage() {
+        System.out.println(START_MSG);
     }
 }
