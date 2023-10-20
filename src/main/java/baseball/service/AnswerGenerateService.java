@@ -3,11 +3,9 @@ package baseball.service;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class RandomNumberGenerateService {
+public class AnswerGenerateService {
 
     public List<Integer> getGeneratedNumbers() {
         List<Integer> computer = new ArrayList<>();
