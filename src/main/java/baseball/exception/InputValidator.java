@@ -6,7 +6,7 @@ public class InputValidator {
         if (input.length() == 3) {
             return true;
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("입력값의 길이가 3이 아닙니다");
     }
 
     public static boolean isNumber(String input) {
@@ -32,14 +32,14 @@ public class InputValidator {
 
     public static boolean isLengthOne(String line) {
         if (line.length() != 1) {
-            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+            throw new IllegalArgumentException("1 또는 2의 한 글자만 입력 가능합니다.");
         }
         return true;
     }
 
     public static boolean isEqualToOneOrTwo(String line) {
         if (line.charAt(0) != '1' || line.charAt(0) != '2') {
-            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+            throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
         return true;
     }
