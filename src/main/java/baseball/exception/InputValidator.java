@@ -1,4 +1,4 @@
-package baseball.util.validator;
+package baseball.exception;
 
 public class InputValidator {
 
