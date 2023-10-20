@@ -15,9 +15,11 @@ public class Output {
     public void printStartMessage() {
         System.out.println(START_MSG);
     }
+
     public void printInputRequestMessage() {
         System.out.print(INPUT_REQUEST_MSG);
     }
+
     public void printRestartOrExitMessage() {
         System.out.print(RESTART_OR_EXIT);
     }

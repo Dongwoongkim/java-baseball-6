@@ -1,12 +1,10 @@
 package baseball.controller;
 
+import baseball.model.Result;
 import baseball.service.AnswerGenerateService;
 import baseball.service.ScoreService;
 import baseball.view.Input;
-import baseball.model.Result;
 import baseball.view.Output;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameController {
@@ -16,10 +14,9 @@ public class BaseballGameController {
     private final ScoreService scoreService = new ScoreService();
     private final Input input = new Input();
     private final Output output = new Output();
-    private Result result = new Result(0, 0);
-    private List<Integer> answer = new ArrayList<>();
 
     public void start() {
+        List<Integer> answer;
         output.printStartMessage();
         while (true) {
             answer = makeNewAnswer();
@@ -31,6 +28,7 @@ public class BaseballGameController {
     }
 
     private void playOneRound(List<Integer> answer) {
+        Result result;
         while (true) {
             output.printInputRequestMessage();
             result = scoreService.calculateScore(input.getSubmit(), answer);

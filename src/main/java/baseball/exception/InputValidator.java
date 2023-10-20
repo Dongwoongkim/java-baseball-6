@@ -9,8 +9,8 @@ public class InputValidator {
         return false;
     }
 
-    public static boolean isRestartOrExitValid(String line) {
-        if (isLengthOne(line) && isEqualToOneOrTwo(line)) {
+    public static boolean isRestartOrExitValid(String input) {
+        if (isLengthOne(input) && isEqualToOneOrTwo(input)) {
             return true;
         }
         return false;
@@ -44,15 +44,15 @@ public class InputValidator {
         return true;
     }
 
-    public static boolean isLengthOne(String line) {
-        if (line.length() != 1) {
+    public static boolean isLengthOne(String input) {
+        if (input.length() != 1) {
             throw new IllegalArgumentException("1 또는 2의 한 글자만 입력 가능합니다.");
         }
         return true;
     }
 
-    public static boolean isEqualToOneOrTwo(String line) {
-        if (line.charAt(0) != '1' && line.charAt(0) != '2') {
+    public static boolean isEqualToOneOrTwo(String input) {
+        if (input.charAt(0) != '1' && input.charAt(0) != '2') {
             throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
         return true;
