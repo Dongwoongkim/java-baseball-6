@@ -3,8 +3,8 @@ package baseball.controller;
 import baseball.model.Result;
 import baseball.service.AnswerGenerateService;
 import baseball.service.ScoreService;
-import baseball.view.Input;
-import baseball.view.Output;
+import baseball.view.InputView;
+import baseball.view.OutputView;
 import java.util.List;
 
 public class BaseballGameController {
@@ -12,16 +12,16 @@ public class BaseballGameController {
     private static final Integer EXIT = 2;
     private final AnswerGenerateService answerGenerateService = new AnswerGenerateService();
     private final ScoreService scoreService = new ScoreService();
-    private final Input input = new Input();
-    private final Output output = new Output();
+    private final InputView inputView = new InputView();
+    private final OutputView outputView = new OutputView();
 
     public void start() {
         List<Integer> answer;
-        output.printStartMessage();
+        outputView.printStartMessage();
         while (true) {
             answer = makeNewAnswer();
             playOneRound(answer);
-            if (input.getRestartOrExit() == EXIT) {
+            if (inputView.getRestartOrExit() == EXIT) {
                 break;
             }
         }
@@ -30,11 +30,11 @@ public class BaseballGameController {
     private void playOneRound(List<Integer> answer) {
         Result result;
         while (true) {
-            output.printInputRequestMessage();
-            result = scoreService.calculateScore(input.getSubmit(), answer);
-            output.printResult(result);
+            outputView.printInputRequestMessage();
+            result = scoreService.calculateScore(inputView.getSubmit(), answer);
+            outputView.printResult(result);
             if (scoreService.isAllStrike(result)) {
-                output.printRestartOrExitMessage();
+                outputView.printRestartOrExitMessage();
                 break;
             }
         }

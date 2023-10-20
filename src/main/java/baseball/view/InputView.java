@@ -7,7 +7,7 @@ import static baseball.exception.InputValidator.isSubmitValid;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
-public class Input {
+public class InputView {
 
     public List<Integer> getSubmit() {
         String line = Console.readLine();
