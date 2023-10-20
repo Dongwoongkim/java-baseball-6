@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RandomNumberGenerateService {
+
     public List<Integer> getGeneratedNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {

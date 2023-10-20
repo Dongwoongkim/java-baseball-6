@@ -8,10 +8,16 @@ import java.util.stream.IntStream;
 
 public class ScoreService {
 
+    private static final Integer THREE_STRIKE = 3;
+
     public Result calculateScore(List<Integer> input, List<Integer> result) {
         Integer strike = calculateStrike(input, result);
         Integer ball = calculateBall(input, result);
         return new Result(strike, ball);
+    }
+
+    public boolean isAllStrike(Result result) {
+        return result.getStrike() == THREE_STRIKE;
     }
 
     public Integer calculateStrike(List<Integer> input, List<Integer> result) {

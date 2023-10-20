@@ -6,30 +6,20 @@ import static baseball.exception.InputValidator.*;
 import static baseball.converter.StringToListConverter.StringToList;
 
 public class Input {
-    private List<Integer> input;
-    private Integer exit;
 
-    public List<Integer> getInput() {
-        setInput();
-        return this.input;
-    }
-
-    public Integer getExit() {
-        setExit();
-        return this.exit;
-    }
-
-    public void setInput() {
+    public List<Integer> getSubmit() {
         String line = Console.readLine();
-        if (isInputValid(line)) {
-            this.input = StringToList(line);
+        if (isSubmitValid(line)) {
+            return StringToList(line);
         }
+        throw new IllegalArgumentException();
     }
 
-    private void setExit() {
+    public Integer getRestartOrExit() {
         String line = Console.readLine();
-        if (isExitValid(line)) {
-            this.exit = Integer.parseInt(line);
+        if (isRestartOrExitValid(line)) {
+            return Integer.parseInt(line);
         }
+        throw new IllegalArgumentException();
     }
 }

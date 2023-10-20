@@ -2,6 +2,20 @@ package baseball.exception;
 
 public class InputValidator {
 
+    public static boolean isSubmitValid(String input) {
+        if (isThreeChar(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isRestartOrExitValid(String line) {
+        if (isLengthOne(line) && isEqualToOneOrTwo(line)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isThreeChar(String input) {
         if (input.length() == 3) {
             return true;
@@ -38,23 +52,9 @@ public class InputValidator {
     }
 
     public static boolean isEqualToOneOrTwo(String line) {
-        if (line.charAt(0) != '1' || line.charAt(0) != '2') {
+        if (line.charAt(0) != '1' && line.charAt(0) != '2') {
             throw new IllegalArgumentException("1 또는 2만 입력 가능합니다.");
         }
         return true;
-    }
-
-    public static boolean isInputValid(String input) {
-        if (isThreeChar(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isExitValid(String line) {
-        if (isLengthOne(line) && isEqualToOneOrTwo(line)) {
-            return true;
-        }
-        return false;
     }
 }
