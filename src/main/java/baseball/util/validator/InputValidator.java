@@ -16,7 +16,7 @@ public class InputValidator {
         return true;
     }
 
-    public static boolean isBetween1And9(String input) {
+    public static boolean isBetweenOneAndNine(String input) {
         if (input.chars().anyMatch(c -> c < '1' || c > '9')) {
             throw new IllegalArgumentException("입력값이 1~9 사이의 숫자가 아닙니다.");
         }
@@ -29,27 +29,32 @@ public class InputValidator {
         }
         return true;
     }
+
     public static boolean isLengthOne(String line) {
-        return line.length() == 1;
+        if (line.length() != 1) {
+            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+        }
+        return true;
     }
 
-    public static boolean isEqualTo1or2(String line) {
-        return line.charAt(0) == '1' || line.charAt(0) == '2';
+    public static boolean isEqualToOneOrTwo(String line) {
+        if (line.charAt(0) != '1' || line.charAt(0) != '2') {
+            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+        }
+        return true;
     }
 
-    public static boolean validateInput(String input) {
-        if (isThreeChar(input) && isNumber(input) && isBetween1And9(input) && isNotDuplicate(input)) {
+    public static boolean isInputValid(String input) {
+        if (isThreeChar(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
             return true;
         }
         return false;
     }
 
-    public static void validateExit(String line) {
-        if (!isLengthOne(line)) {
-            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
+    public static boolean isExitValid(String line) {
+        if (isLengthOne(line) && isEqualToOneOrTwo(line)) {
+            return true;
         }
-        if (!isEqualTo1or2(line)) {
-            throw new IllegalArgumentException("1 또는 2만 입력해야 합니다.");
-        }
+        return false;
     }
 }

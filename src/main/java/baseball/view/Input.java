@@ -21,14 +21,15 @@ public class Input {
 
     public void setInput() {
         String line = Console.readLine();
-        if (validateInput(line)) {
+        if (isInputValid(line)) {
             this.input = StringToList(line);
         }
     }
 
     private void setExit() {
         String line = Console.readLine();
-        validateExit(line);
-        this.exit = Integer.parseInt(line);
+        if (isExitValid(line)) {
+            this.exit = Integer.parseInt(line);
+        }
     }
 }
