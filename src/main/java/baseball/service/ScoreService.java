@@ -2,7 +2,6 @@ package baseball.service;
 
 
 import baseball.model.Result;
-
 import java.util.List;
 import java.util.stream.IntStream;
 

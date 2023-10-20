@@ -1,6 +1,7 @@
 package baseball.model;
 
 public class Result {
+
     private Integer strike;
     private Integer ball;
 

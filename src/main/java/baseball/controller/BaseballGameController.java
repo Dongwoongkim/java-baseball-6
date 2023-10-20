@@ -11,8 +11,8 @@ public class BaseballGameController {
 
     private static final String START_MSG = "숫자 야구 게임을 시작합니다.";
     private static final Integer EXIT = 2;
-    private final AnswerGenerateService answerGenerateService = new AnswerGenerateService();
-    private final ScoreService scoreService = new ScoreService();
+    private final AnswerGenerateService answerGenerateService = new AnswerGenerateService(); // Computer
+    private final ScoreService scoreService = new ScoreService(); // Computer
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
