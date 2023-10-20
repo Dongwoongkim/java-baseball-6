@@ -6,20 +6,23 @@ import baseball.view.Input;
 import baseball.model.Result;
 import baseball.view.Output;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballGameController {
+
     private static final Integer EXIT = 2;
     private final RandomNumberGenerateService randomNumberGenerateService = new RandomNumberGenerateService();
     private final ScoreService scoreService = new ScoreService();
     private final Input input = new Input();
     private final Output output = new Output();
     private Result result = new Result(0, 0);
+    private List<Integer> answer = new ArrayList<>();
 
     public void start() {
         output.printStartMessage();
         while (true) {
-            List<Integer> answer = makeNewAnswer();
+            answer = makeNewAnswer();
             playOneRound(answer);
             if (input.getRestartOrExit() == EXIT) {
                 break;
