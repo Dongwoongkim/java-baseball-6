@@ -9,7 +9,7 @@ public class Output {
     private static final String STRIKE = "스트라이크";
     private static final String NOTHING = "낫싱";
     private static final String THREE_STRIKE = "3스트라이크";
-    private static final String PASS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    private static final String SUCCESS = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String RESTART_OR_EXIT = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     public void printStartMessage() {
@@ -28,7 +28,7 @@ public class Output {
             return;
         } else if (result.getStrike() == 3) {
             System.out.println(THREE_STRIKE);
-            System.out.println(PASS);
+            System.out.println(SUCCESS);
             return;
         }
         System.out.println(result.getBall() + BALL + result.getStrike() + STRIKE);
