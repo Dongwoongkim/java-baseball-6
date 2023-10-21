@@ -2,7 +2,7 @@ package baseball.exception;
 
 public class InputValidator {
 
-    public static boolean isSubmitValid(String input) {
+    public static boolean isInputNumbersValid(String input) {
         if (isThreeChar(input) && isNumber(input) && isBetweenOneAndNine(input) && isNotDuplicate(input)) {
             return true;
         }
