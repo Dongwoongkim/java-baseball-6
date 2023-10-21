@@ -1,38 +1,28 @@
 package baseball.model;
 
-import static baseball.converter.StringToListConverter.StringToList;
-import static baseball.exception.InputValidator.isInputNumbersValid;
-import static baseball.exception.InputValidator.isRestartOrExitValid;
-
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Player {
 
-    private List<Integer> numbers;
-    private Integer restartOrExit;
+    private Input input;
 
     public void inputNumbers() {
-        String input = Console.readLine();
-        if (!isInputNumbersValid(input)) {
-            throw new IllegalArgumentException();
-        }
-        this.numbers = StringToList(input);
+        input.inputNumbers();
+    }
+
+    public Player() {
+        this.input = new Input();
     }
 
     public void inputRestartOrExit() {
-        String input = Console.readLine();
-        if (!isRestartOrExitValid(input)) {
-            throw new IllegalArgumentException();
-        }
-        this.restartOrExit = Integer.parseInt(input);
+        input.inputRestartOrExit();
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return input.getNumbers();
     }
 
     public Integer getRestartOrExit() {
-        return restartOrExit;
+        return input.getRestartOrExit();
     }
 }
