@@ -14,7 +14,6 @@ public class BaseballGameController {
 
     private final Computer computer = new Computer();
     private final Player player = new Player();
-    private Score score = new Score(0, 0);
     private final OutputView outputView = new OutputView();
 
     public void start() {
@@ -29,7 +28,7 @@ public class BaseballGameController {
         while (true) {
             printSuggestNumberMessage();
             player.inputNumbers();
-            score = computer.calculateScore(player.getNumbers(), answer);
+            Score score = computer.calculateScore(player.getNumbers(), answer);
             outputView.printResult(score);
             if (score.isAllStrike()) {
                 printRestartOrExitMessage();
