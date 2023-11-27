@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface AnswerGenerator {
 
-    public List<Integer> pickThreeNumbers();
+    List<Integer> pickThreeNumbers();
 }

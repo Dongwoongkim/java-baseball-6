@@ -23,11 +23,14 @@ public class BaseballGameController {
     }
 
     public void run() {
-        outputView.printStartMessage();
+        showStartMessage();
         do {
             playOneRound();
-            outputView.printWinGameMessage();
         } while (!inputRestartOrExit().isExit());
+    }
+
+    private void showWinMessage() {
+        outputView.printWinGameMessage();
     }
 
     private void playOneRound() {
@@ -35,8 +38,9 @@ public class BaseballGameController {
         while (true) {
             GuessNumber guessNumber = initGuessNumber();
             Score score = Score.create(guessNumber.calculateStrike(answer), guessNumber.calculateBall(answer));
-            outputView.printHint(score.getStrike(), score.getBall());
+            showHint(score);
             if (score.isThreeStrike()) {
+                showWinMessage();
                 return;
             }
         }
@@ -52,10 +56,18 @@ public class BaseballGameController {
         return GuessNumber.create(inputNumbers());
     }
 
+    private void showHint(Score score) {
+        outputView.printHint(score.getStrike(), score.getBall());
+    }
+
     private List<Number> inputNumbers() {
         String inputNumbers = inputView.inputNumbers();
         InputValidator.validateInputNumbers(inputNumbers);
         return InputConverter.stringToGuessNumberList(inputNumbers);
+    }
+
+    private void showStartMessage() {
+        outputView.printStartMessage();
     }
 
     private RestartOrExit inputRestartOrExit() {

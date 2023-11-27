@@ -15,10 +15,14 @@ public class RandomNumberGenerator implements AnswerGenerator {
         List<Integer> answer = new ArrayList<>();
         while (answer.size() < ANSWER_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!answer.contains(randomNumber)) {
-                answer.add(randomNumber);
-            }
+            addIfNotExist(answer, randomNumber);
         }
         return answer;
+    }
+
+    private void addIfNotExist(final List<Integer> answer, final int randomNumber) {
+        if (!answer.contains(randomNumber)) {
+            answer.add(randomNumber);
+        }
     }
 }

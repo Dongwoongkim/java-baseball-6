@@ -10,6 +10,7 @@ public class GuessNumber {
 
     private static final Integer MIN_INDEX = 0;
     private static final Integer MAX_INDEX = 3;
+    private static final Integer VALID_NUMBER_SIZE = 3;
 
     private final List<Number> numbers;
 
@@ -27,13 +28,13 @@ public class GuessNumber {
             throw new IllegalArgumentException();
         }
 
-        if (!isLengthThree(inputNumbers)) {
+        if (!isValidSize(inputNumbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean isLengthThree(final List<Number> inputNumbers) {
-        if (inputNumbers.size() == 3) {
+    private static boolean isValidSize(final List<Number> inputNumbers) {
+        if (inputNumbers.size() == VALID_NUMBER_SIZE) {
             return true;
         }
         return false;

@@ -24,7 +24,7 @@ public class Score {
     }
 
     public boolean isThreeStrike() {
-        if (strike == THREE_STRIKE) {
+        if (strike.equals(THREE_STRIKE)) {
             return true;
         }
         return false;
