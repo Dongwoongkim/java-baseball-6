@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.model.AnswerGenerator;
 import baseball.model.GuessNumber;
 import baseball.model.RandomNumberGenerator;
+import baseball.model.Score;
 import baseball.model.vo.Number;
 import baseball.model.vo.RestartOrExit;
 import baseball.util.InputConverter;
@@ -23,38 +24,22 @@ public class BaseballGameController {
 
     public void run() {
         outputView.printStartMessage();
-        while (true) {
+        do {
             playOneRound();
             outputView.printWinGameMessage();
-            RestartOrExit restartOrExit = inputRestartOrExit();
-            if (restartOrExit.isExit()) {
-                return;
-            }
-        }
-    }
-
-    private RestartOrExit inputRestartOrExit() {
-        String restartOrExit = inputView.inputRestartOrExit();
-        InputValidator.validateRestartOrExit(restartOrExit);
-        return new RestartOrExit(InputConverter.stringToRestartOrExit(restartOrExit));
+        } while (!inputRestartOrExit().isExit());
     }
 
     private void playOneRound() {
         List<Integer> answer = initAnswer();
-
         while (true) {
             GuessNumber guessNumber = initGuessNumber();
-            Integer strike = guessNumber.calculateStrike(answer);
-            Integer ball = guessNumber.calculateBall(answer);
-            outputView.printHint(strike, ball);
-            if (strike == 3) {
+            Score score = Score.create(guessNumber.calculateStrike(answer), guessNumber.calculateBall(answer));
+            outputView.printHint(score.getStrike(), score.getBall());
+            if (score.isThreeStrike()) {
                 return;
             }
         }
-    }
-
-    private GuessNumber initGuessNumber() {
-        return GuessNumber.create(inputNumbers());
     }
 
     private List<Integer> initAnswer() {
@@ -63,9 +48,19 @@ public class BaseballGameController {
         return answer;
     }
 
+    private GuessNumber initGuessNumber() {
+        return GuessNumber.create(inputNumbers());
+    }
+
     private List<Number> inputNumbers() {
         String inputNumbers = inputView.inputNumbers();
         InputValidator.validateInputNumbers(inputNumbers);
         return InputConverter.stringToGuessNumberList(inputNumbers);
+    }
+
+    private RestartOrExit inputRestartOrExit() {
+        String restartOrExit = inputView.inputRestartOrExit();
+        InputValidator.validateRestartOrExit(restartOrExit);
+        return new RestartOrExit(InputConverter.stringToRestartOrExit(restartOrExit));
     }
 }
