@@ -12,8 +12,8 @@ public class BaseballGameController {
         this.inputView = inputView;
         this.outputView = outputView;
     }
-    
-    public void run() {
 
+    public void run() {
+        
     }
 }

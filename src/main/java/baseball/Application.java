@@ -10,5 +10,6 @@ public class Application {
                 new InputView(),
                 new OutputView()
         );
+        baseballGameController.run();
     }
 }
