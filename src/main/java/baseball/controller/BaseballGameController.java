@@ -16,7 +16,7 @@ public class BaseballGameController {
     private final InputView inputView;
     private final OutputView outputView;
 
-    public BaseballGameController(InputView inputView, OutputView outputView) {
+    public BaseballGameController(final InputView inputView, final OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -41,7 +41,7 @@ public class BaseballGameController {
 
     private void playOneRound() {
         List<Integer> answer = initAnswer();
-        
+
         while (true) {
             GuessNumber guessNumber = initGuessNumber();
             Integer strike = guessNumber.calculateStrike(answer);

@@ -8,20 +8,20 @@ public record Number(Integer number) {
         validate(number);
     }
 
-    private static void validate(Integer number) {
+    private static void validate(final Integer number) {
         if (isZero(number)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean isZero(Integer number) {
+    private static boolean isZero(final Integer number) {
         if (number.equals(ZERO_NUMBER)) {
             return true;
         }
         return false;
     }
 
-    public boolean isEqual(Integer answer) {
+    public boolean isEqualTo(final Integer answer) {
         return number.equals(answer);
     }
 }

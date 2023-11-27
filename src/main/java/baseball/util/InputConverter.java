@@ -9,14 +9,14 @@ public class InputConverter {
     private InputConverter() {
     }
 
-    public static List<Number> stringToGuessNumberList(String numbers) {
+    public static List<Number> stringToGuessNumberList(final String numbers) {
         return numbers.chars()
                 .mapToObj(number ->
                         new Number(Character.getNumericValue(number))
                 ).collect(Collectors.toList());
     }
 
-    public static Integer stringToRestartOrExit(String restartOrExit) {
+    public static Integer stringToRestartOrExit(final String restartOrExit) {
         return Integer.valueOf(restartOrExit);
     }
 }

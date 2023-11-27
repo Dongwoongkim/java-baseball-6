@@ -9,7 +9,7 @@ public record RestartOrExit(Integer number) {
         validate(number);
     }
 
-    private static void validate(Integer restartOrExit) {
+    private static void validate(final Integer restartOrExit) {
         if (restartOrExit != RESTART && restartOrExit != EXIT) {
             throw new IllegalArgumentException();
         }

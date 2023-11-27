@@ -5,7 +5,7 @@ public class InputValidator {
     private InputValidator() {
     }
 
-    public static void validateInputNumbers(String inputNumbers) {
+    public static void validateInputNumbers(final String inputNumbers) {
         if (inputNumbers.isEmpty()) {
             throw new IllegalArgumentException();
         }
@@ -14,7 +14,7 @@ public class InputValidator {
         }
     }
 
-    public static void validateRestartOrExit(String inputRestartOrExit) {
+    public static void validateRestartOrExit(final String inputRestartOrExit) {
         if (inputRestartOrExit.isEmpty()) {
             throw new IllegalArgumentException();
         }
@@ -23,7 +23,7 @@ public class InputValidator {
         }
     }
 
-    private static boolean isNumeric(String input) {
+    private static boolean isNumeric(final String input) {
         try {
             Integer.valueOf(input);
             return true;
