@@ -1,17 +1,11 @@
 package baseball.model.vo;
 
-public class Number {
+public record Number(Integer number) {
 
     private static final Integer ZERO_NUMBER = 0;
-    private final Integer number;
 
-    private Number(Integer number) {
-        this.number = number;
-    }
-
-    public static Number create(Integer number) {
+    public Number {
         validate(number);
-        return new Number(number);
     }
 
     private static void validate(Integer number) {
@@ -29,9 +23,5 @@ public class Number {
 
     public boolean isEqual(Integer answer) {
         return number.equals(answer);
-    }
-
-    public Integer getNumber() {
-        return number;
     }
 }

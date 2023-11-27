@@ -4,6 +4,7 @@ import baseball.model.AnswerGenerator;
 import baseball.model.GuessNumber;
 import baseball.model.RandomNumberGenerator;
 import baseball.model.vo.Number;
+import baseball.model.vo.RestartOrExit;
 import baseball.util.InputConverter;
 import baseball.util.InputValidator;
 import baseball.view.InputView;
@@ -25,18 +26,22 @@ public class BaseballGameController {
         while (true) {
             playOneRound();
             outputView.printWinGameMessage();
-            inputRestartOrExit();
+            RestartOrExit restartOrExit = inputRestartOrExit();
+            if (restartOrExit.isExit()) {
+                return;
+            }
         }
     }
 
-    private void inputRestartOrExit() {
-        inputView.inputRestartOrExit();
+    private RestartOrExit inputRestartOrExit() {
+        String restartOrExit = inputView.inputRestartOrExit();
+        InputValidator.validateRestartOrExit(restartOrExit);
+        return new RestartOrExit(InputConverter.stringToRestartOrExit(restartOrExit));
     }
 
     private void playOneRound() {
         List<Integer> answer = initAnswer();
-        System.out.println(answer.toString());
-
+        
         while (true) {
             GuessNumber guessNumber = initGuessNumber();
             Integer strike = guessNumber.calculateStrike(answer);

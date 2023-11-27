@@ -12,7 +12,11 @@ public class InputConverter {
     public static List<Number> stringToGuessNumberList(String numbers) {
         return numbers.chars()
                 .mapToObj(number ->
-                        Number.create(Character.getNumericValue(number))
+                        new Number(Character.getNumericValue(number))
                 ).collect(Collectors.toList());
+    }
+
+    public static Integer stringToRestartOrExit(String restartOrExit) {
+        return Integer.valueOf(restartOrExit);
     }
 }

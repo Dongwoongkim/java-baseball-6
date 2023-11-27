@@ -8,6 +8,9 @@ import java.util.stream.IntStream;
 
 public class GuessNumber {
 
+    private static final Integer MIN_INDEX = 0;
+    private static final Integer MAX_INDEX = 3;
+
     private final List<Number> numbers;
 
     private GuessNumber(List<Number> numbers) {
@@ -23,6 +26,17 @@ public class GuessNumber {
         if (containsDuplicateNumber(inputNumbers)) {
             throw new IllegalArgumentException();
         }
+
+        if (!isLengthThree(inputNumbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isLengthThree(List<Number> inputNumbers) {
+        if (inputNumbers.size() == 3) {
+            return true;
+        }
+        return false;
     }
 
     private static boolean containsDuplicateNumber(List<Number> inputNumbers) {
@@ -31,13 +45,13 @@ public class GuessNumber {
     }
 
     public Integer calculateStrike(List<Integer> answer) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(MIN_INDEX, MAX_INDEX)
                 .filter(index -> isStrike(answer, index))
                 .count();
     }
 
     public Integer calculateBall(List<Integer> answer) {
-        return (int) IntStream.range(0, 3)
+        return (int) IntStream.range(MIN_INDEX, MAX_INDEX)
                 .filter(index -> !isStrike(answer, index) && isBall(answer, index))
                 .count();
     }
@@ -47,6 +61,6 @@ public class GuessNumber {
     }
 
     private boolean isBall(List<Integer> answer, int index) {
-        return answer.contains(numbers.get(index).getNumber());
+        return answer.contains(numbers.get(index).number());
     }
 }
