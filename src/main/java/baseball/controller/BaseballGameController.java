@@ -30,8 +30,14 @@ public class BaseballGameController {
         } while (!inputRestartOrExit().isExit());
     }
 
-    private void showWinMessage() {
-        outputView.printWinGameMessage();
+    private void showStartMessage() {
+        outputView.printStartMessage();
+    }
+
+    private List<Integer> initAnswer() {
+        AnswerGenerator answerGenerator = new RandomNumberGenerator();
+        List<Integer> answer = answerGenerator.pickThreeNumbers();
+        return answer;
     }
 
     private void playOneRound(final List<Integer> answer) {
@@ -46,18 +52,8 @@ public class BaseballGameController {
         }
     }
 
-    private List<Integer> initAnswer() {
-        AnswerGenerator answerGenerator = new RandomNumberGenerator();
-        List<Integer> answer = answerGenerator.pickThreeNumbers();
-        return answer;
-    }
-
     private GuessNumber initGuessNumber() {
         return GuessNumber.create(inputNumbers());
-    }
-
-    private void showHint(Score score) {
-        outputView.printHint(score.getStrike(), score.getBall());
     }
 
     private List<Number> inputNumbers() {
@@ -66,8 +62,12 @@ public class BaseballGameController {
         return InputConverter.stringToGuessNumberList(inputNumbers);
     }
 
-    private void showStartMessage() {
-        outputView.printStartMessage();
+    private void showHint(Score score) {
+        outputView.printHint(score.getStrike(), score.getBall());
+    }
+
+    private void showWinMessage() {
+        outputView.printWinGameMessage();
     }
 
     private RestartOrExit inputRestartOrExit() {
