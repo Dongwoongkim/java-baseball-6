@@ -25,7 +25,8 @@ public class BaseballGameController {
     public void run() {
         showStartMessage();
         do {
-            playOneRound();
+            List<Integer> answer = initAnswer();
+            playOneRound(answer);
         } while (!inputRestartOrExit().isExit());
     }
 
@@ -33,8 +34,7 @@ public class BaseballGameController {
         outputView.printWinGameMessage();
     }
 
-    private void playOneRound() {
-        List<Integer> answer = initAnswer();
+    private void playOneRound(final List<Integer> answer) {
         while (true) {
             GuessNumber guessNumber = initGuessNumber();
             Score score = Score.create(guessNumber.calculateStrike(answer), guessNumber.calculateBall(answer));
